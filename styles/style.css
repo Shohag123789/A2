@@ -2,24 +2,26 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Heebo', sans-serif;
-    background-color: #1a1a2e; /* A dark color for the rest of the page */
+    /* background-color: #1a1a2e; */
+    color: white;
 }
 
+/* --- 2. Navigation Layout --- */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #16213e; /* Dark purple background */
-    padding: 10px 50px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    color: white;
+    background-color: #1A0B2E;
+    padding: 15px 50px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .logo {
     font-size: 24px;
     font-weight: 700;
-    /* Gradient effect on the text */
-    background: linear-gradient(to right, #e94560, #ff7e5f);
+    background: linear-gradient(135deg, #F7E93F 0%, #FB09B4 50%, #9100F8 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -32,40 +34,229 @@ body {
     gap: 30px;
     margin: 0;
     padding: 0;
-    align-items: center;
 }
 
-.nav-links li a {
+.nav-links a {
     color: #b3b3b3;
     text-decoration: none;
-    padding: 5px 0;
     transition: color 0.3s ease;
 }
 
-.nav-links li a:hover {
+.nav-links a:hover {
     color: #fff;
 }
 
+/* --- 3. Buttons --- */
 .subscribe-btn {
-    background-image: linear-gradient(to right, #ff7e5f, #e94560);
-    border: none;
-    border-radius: 25px; /* Pill shape */
-    padding: 10px 20px;
+    background: linear-gradient(135deg, #F7E93F 0%, #FB09B4 50%, #9100F8 100%);
     color: white;
-    font-size: 16px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
+    padding: 12px 24px;
+    border-radius: 24px;
+    font-weight: 600;
     text-decoration: none;
-    transition: transform 0.2s ease;
-    box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+    box-shadow: 0 4px 15px rgba(251, 9, 180, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .subscribe-btn:hover {
     transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(251, 9, 180, 0.5);
 }
 
-.arrow {
-    margin-left: 8px;
-    font-size: 18px;
+/* --- 4. Responsive Logic (The Checkbox Hack) --- */
+.menu-checkbox, .hamburger, .mobile-only {
+    display: none;
+}
+
+@media (max-width: 576px) {
+    .navbar { padding: 15px 25px; }
+    
+    .desktop-only { display: none; }
+    .mobile-only { display: block; }
+
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        z-index: 1100;
+    }
+
+    .hamburger span {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        transition: 0.3s;
+    }
+
+    .nav-container {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background-color: #1A0B2E;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+       
+        
+    }
+   
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        font-size: .75rem;
+    }
+
+        
+        .menu-checkbox:checked~.nav-container {
+            right: 0;
+        }
+    
+        
+        .menu-checkbox:checked~.hamburger span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+    
+        .menu-checkbox:checked~.hamburger span:nth-child(2) {
+            opacity: 0;
+        }
+    
+        .menu-checkbox:checked~.hamburger span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -7px); }
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; 
+}
+
+.container  img {
+    width: 100%;
+    display: block;
+
+}
+
+
+.img-1 {
+    position: absolute;
+    width: 22%;
+    top: 12%;
+    left: 50%;
+    transform: translateX(-50%); 
+}
+
+.img-2 {
+    position: absolute;
+    width: 10%;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%); 
+    z-index: 1;
+}
+.badge{
+    background-color: #09e17c;
+    border-radius: 15px;
+    padding: 4px;
+    font-size: 14px;
+    position: absolute;
+    top: 15%;
+
+    left: 57%;
+    transform: translateX(-50%);
+}
+.banner-title{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 100%;
+}
+.banner-title h1{
+    font-size: 36px;
+    margin: 0;
+}
+
+    .banner-btn{
+    position: relative;
+    margin-top: 20px;
+    padding: 10px 20px;
+    top: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+
+.trans-btn{
+    margin-left: 10px;
+    background-color: transparent;
+   
+    border: 1px solid green;
+  
+    color: white;
+    padding: 12px 24px;
+    border-radius: 24px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(251, 9, 180, 0.3);
+    transition: transform 0.2s, box
+}
+.trans-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(251, 9, 180, 0.5);
+}
+
+@media screen and (max-width: 576px) {
+    .container{
+        weight:440px;
+        height:466px;
+
+    }
+   .container .hero-bg{
+        width: 100%;
+        height: 50%;
+        object-fit: cover;
+    }
+    .img-1 {
+        /* width: 60%; /* Make the decorative circle larger on mobile */
+        top: 5%; */
+    }
+    
+    .img-2 {
+     top: 10%;
+        
+    }
+
+    .badge {
+        left: 60%; /* Re-adjust badge position so it doesn't float away */
+        top: 7%;
+        font-size: 10px;
+    }
+
+    .banner-title {
+        margin-top: 19px;
+        top: 24%; /* Move text up to avoid being cut off */
+        padding: 0 20px; /* Prevent text from hitting screen edges */
+    }
+
+    .banner-title h1 {
+        font-size: 14px; /* Scale down heading */
+    }
+
+    .banner-title p {
+        font-size: 10px;
+    }
+
+    .banner-btn {
+        margin-top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+    }
 }
